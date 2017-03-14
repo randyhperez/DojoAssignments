@@ -38,10 +38,20 @@
   padding: 10px 15px;
 }
 
+#gradient {
+  background: #e3e3e3; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#e3e3e3, white, white); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#e3e3e3, white, white); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#e3e3e3, white, white); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#e3e3e3, white, white); /* Standard syntax */
+}
+
 #sidebar {
   width: 220px;
   margin-top: 20px;
   position: relative;
+  display: inline-block;
+  vertical-align: top;
 }
 
 #sidebar h5 {
@@ -76,25 +86,25 @@
 
 #button1 {
   background: #6398c3; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(#6398c3, #22659e, #6398c3); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#6398c3, #22659e, #6398c3); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#6398c3, #22659e, #6398c3); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#6398c3, #22659e, #6398c3); /* Standard syntax */
+  background: -webkit-linear-gradient(#6398c3, #22659e); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#6398c3, #22659e); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#6398c3, #22659e); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#6398c3, #22659e); /* Standard syntax */
   margin-bottom: 5px;
 }
 
 #button2 {
   background: #ebaa53; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(#ebaa53, #ef7300, #ebaa53); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#ebaa53, #ef7300, #ebaa53); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#ebaa53, #ef7300, #ebaa53); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#ebaa53, #ef7300, #ebaa53); /* Standard syntax */
+  background: -webkit-linear-gradient(#ebaa53, #ef7300); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#ebaa53, #ef7300); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#ebaa53, #ef7300); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#ebaa53, #ef7300); /* Standard syntax */
 }
 
 #sidebar hr {
   margin-top: 20px;
-  padding-top: 1px;
-  background-color: black;
+  padding-top: 0px;
+  background-color: #a6a6a6;
 }
 
 #ad-background {
@@ -131,10 +141,10 @@
   margin-left: 28px;
   font-size: 18px;
   background: #79d0df; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(#79d0df, #00c1df, #79d0df); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#79d0df, #00c1df, #79d0df); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#79d0df, #00c1df, #79d0df); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#79d0df, #00c1df, #79d0df); /* Standard syntax */
+  background: -webkit-linear-gradient(#79d0df, #00c1df); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#79d0df, #00c1df); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#79d0df, #00c1df); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#79d0df, #00c1df); /* Standard syntax */
   padding: 5px 0px;
   border-radius: 5px;
   box-shadow: 2px 2px 2px black;
@@ -156,4 +166,114 @@
 #main-content {
   display: inline-block;
   margin-left: 20px;
+  width: 725px;
+}
+
+#dns {
+  vertical-align: top;
+  display: inline-block;
+}
+
+#dns img {
+  width: 20px;
+  margin-top: 10px;
+}
+
+#dns a {
+  text-decoration: none;
+}
+
+#phone {
+  display: inline-block;
+  text-align: center;
+  margin-left: 460px;
+}
+
+#phone img {
+  width: 40px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#phone p {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 10px;
+}
+
+#phone span {
+  font-size: 25px;
+  color: #00bfdf;
+  font-weight: bold;
+}
+
+#body-hr {
+  /*width: 720px;*/
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding-top: 0px;
+  background-color: #a6a6a6;
+}
+
+#main-content h3 {
+  color: #22659e;
+  margin-top: 10px;
+}
+
+#main-content ul, #main-content ol {
+  padding-left: 40px;
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+#main-content li {
+  margin-top: 5px;
+}
+
+.blue {
+  color: #00bfdf;
+}
+
+#body-content p {
+  font-size: 15px;
+}
+
+#client-server {
+  margin-top: 10px;
+  width: 310px;
+  margin-left: 200px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+#footer-thing {
+  margin-top: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 20px;
+  border-top: 5px solid #0085e0;
+  border-left: 5px solid #0085e0;
+  border-right: 5px solid #0085e0;
+  padding: 5px;
+  box-shadow: 2px 0px 1px #9a9a9a;
+}
+
+#footer-thing img {
+  width: 100px;
+}
+
+#footer-text {
+  display: inline-block;
+  width: 550px;
+  margin-left: 10px;
+}
+
+#footer-text a {
+  text-decoration: none;
+}
+
+#last-line {
+  margin-top: 5px;
 }
