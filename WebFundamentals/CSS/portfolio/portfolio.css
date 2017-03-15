@@ -128,15 +128,16 @@ h4 {
 }
 
 .body-content a {
-  background-color: green;
+  background-color: #407d61;
   padding: 5px;
   border: 1px solid black;
   border-radius: 8px;
   color: white;
   text-decoration: none;
   text-align: center;
+	font-size: 12px;
   font-family: helvetica;
-  /*margin-left: 100px;*/
+	box-shadow: 2px 2px 2px #757b78;
 }
 
 
