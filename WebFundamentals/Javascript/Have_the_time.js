@@ -1,9 +1,9 @@
-var hour = ;
 // set hour to number 1-12
-var minute = ;
+var hour = 1;
 // set minute 0-60
-var period = "";
+var minute = 10;
 // set period to "AM" or "PM"
+var period = "PM";
 
 if (minute > 60 || minute < 0 || hour < 1 || hour > 12) {
   console.log(hour + ":" + minute + " " + period + " can't be shown on a clock dingus!");
@@ -101,13 +101,13 @@ else if (minute < 30) {
   if (period == "AM" && hour >= 4) {
     console.log("It's just after " + hour + " in the morning.");
   }
-  else if (period == "PM" && hour >= 12 && hour <= 4) {
-    console.log("It's just after " + hour + " in the afternoon.");
+  else if (period == "PM"  && hour == 12 || hour <= 4) {
+    console.log("It's just after " + hour + " in the noon.");
   }
   else if (period =="PM" && hour >= 5 && hour <=7) {
     console.log("It's just after " + hour + " in the evening.");
   }
-  else if (period == "PM" && hour >=8 || period == "AM") {
+  else if (period == "PM" && hour >=8 || period == "AM" && hour <= 3) {
     console.log("It's just after " + hour + " at night.");
   }
 }
