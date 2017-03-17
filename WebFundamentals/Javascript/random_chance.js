@@ -5,7 +5,7 @@ function slot(quarters){
       console.log("You are out of quarters duder");
     }
     else if (chance <= 1) {
-      var x = Math.ceil(Math.random() * 50) +51;
+      var x = Math.floor(Math.random() * 50) +51;
       i = i + x;
       console.log("You won " + x + " quarters!!!");
     }
@@ -15,4 +15,4 @@ function slot(quarters){
   }
 }
 // enter amount to run slot machine.
-slot()
+slot(100)
