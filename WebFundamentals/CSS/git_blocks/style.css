@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#wrapper {
+  width: 970px;
+  padding: 10px;
+  background-color: grey;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+header {
+  background-color: #38b0ac;
+  padding:  10px;
+}
+
+img {
+  width: 50px;
+  vertical-align: middle;
+}
+
+  header h1 {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 130px;
+  }
+
+  header>a {
+    color: white;
+    margin-left: 10px;
+    vertical-align: middle;
+    font-size: 14px;
+  }
+
+#main-content {
+  background-color: #fbe691;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+
+.green-box {
+  background-color: #154044;
+  padding: 10px;
+}
+
+  .green-box>p {
+    color: white;
+    margin: 15px 10px;
+    font-size: 14px;
+  }
+
+  .green-box>h3 {
+    color: white;
+  }
+
+aside {
+  width: 250px;
+  height: 518px;
+  display: inline-block;
+}
+
+#right-content {
+  width: 650px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.green-box-top {
+  background-color: #154044;
+  padding: 10px;
+  display: inline-block;
+  margin-left: 25px;
+  width: 167px;
+  height: 152px;
+  vertical-align: top;
+  margin-bottom: 25px;
+}
+
+  .green-box-top>p {
+    color: white;
+    margin: 15px 10px;
+    font-size: 14px;
+    display: inline-block;
+  }
+
+  .green-box-top>h4 {
+    color: white;
+  }
+
+span {
+  color: aqua;
+}
+
+.green-box-middle {
+  background-color: #154044;
+  padding: 10px;
+  display: inline-block;
+  width: 275px;
+  vertical-align: top;
+  margin-left: 25px;
+  margin-bottom: 25px;
+}
+
+  .green-box-middle>p {
+    color: white;
+    margin: 15px 10px;
+    font-size: 14px;
+  }
+
+  .green-box-middle>h4 {
+    color: white;
+  }
+
+#green-box-bottom {
+  background-color: #154044;
+  padding: 10px;
+  display: inline-block;
+  width: 600px;
+  vertical-align: top;
+  margin-left: 25px;
+}
+
+#green-box-bottom>p {
+  color: white;
+  margin: 15px 10px;
+  font-size: 14px;
+}
+
+#green-box-bottom>h4 {
+  color: white;
+}
+
+footer {
+  background-color: #38b0ac;
+  padding: 25px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+  footer>p {
+    margin-left: 245px;
+  }
