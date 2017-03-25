@@ -1,0 +1,17 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 20px;
+}
+
+img {
+  width: 24%
+}
+
+button {
+  margin-top: 50px;
+  margin-left: 50%
+}

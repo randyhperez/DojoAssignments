@@ -54,6 +54,9 @@
           var value = $(this).val();
           $('#valTest').text(value);
         });
+        $('div p').hover(function() {
+          $(this).html('<b>Hello World!</b>')
+        })
       });
     </script>
   </head>
@@ -82,7 +85,10 @@
     <h1 id="fadeIn">Faded!</h1>
     <p id="fadeOut">Hover over me to fade in and out!</p>
     <h1>Type Here!</h1>
-    <input type="text" name="text" value="Type here" id="typeHere">
+    <input type="text" name="text" value="" id="typeHere">
     <p id="valTest"></p>
+    <div>
+      <p>Hover me for some .html stuffs.</p>
+    </div>
   </body>
 </html>
