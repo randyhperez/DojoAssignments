@@ -29,7 +29,7 @@ img {
   header>a {
     color: white;
     margin-left: 10px;
-    vertical-align: middle;
+    /*vertical-align: middle;*/
     font-size: 14px;
   }
 
