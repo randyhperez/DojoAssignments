@@ -1,4 +1,4 @@
-// Part I or assignment
+// Part I of assignment
 var students = [
      {first_name:  'Michael', last_name : 'Jordan'},
      {first_name : 'John', last_name : 'Rosales'},

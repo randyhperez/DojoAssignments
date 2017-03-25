@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JQuery Functions</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+        $('#redButton').click(function() {
+          $('.randomColor').css("color", '#' + Math.floor(Math.random()*16777215).toString(16));
+        });
+        $('#slideToggle').click(function(){
+          $('#hiddenMessage').slideToggle()
+        });
+        $('#slideUp').click(function(){
+          $('#hiddenMessage').slideUp(function(){
+            $('#hidden').show()
+          });
+        });
+        $('#slideDown').click(function(){
+          $('#hiddenMessage').slideDown("slow", function() {
+            $('#hidden').hide()
+          });
+        });
+        $('#before').click(function(){
+          $('#addP').before("<p>Before can insert something before an element being selected kind of like this paragraph!</p>");
+        });
+        $('#after').click(function(){
+          $('#addP').after("<p>After can insert something after an element being selected kind of like this paragraph!</p>");
+        });
+        $('#prepend').click(function(){
+          $('#addP').prepend("Prepend can insert something like text before this paragraph in the same p tag! ");
+        });
+        $('#append').click(function(){
+          $('#addP').append(" Append can insert something like text after this paragraph in the same p tag!");
+        });
+        $('#hide').click(function(){
+          $(this).hide('fast')
+        });
+        $("#show").hover(function(){
+          $('#hide').show()
+        });
+        $('#toggleTime').click(function () {
+          $('.toggleMe').toggle();
+        });
+        $('#fadeOut').hover(function() {
+          $(this).fadeOut();
+        });
+        $('#fadeIn').hover(function() {
+          $('#fadeOut').fadeIn();
+        });
+        $('#typeHere').keyup(function () {
+          var value = $(this).val();
+          $('#valTest').text(value);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button type="button" name="button" id="redButton">Rando Colors</button>
+    <h1 class="randomColor">Random Colors</h1>
+    <p class="randomColor">Click the button to change this text to a random color!</p>
+    <button type="button" name="button" id="slideUp">Slide Up</button>
+    <button type="button" name="button" id="slideToggle">SlideToggle</button>
+    <button type="button" name="button" id="slideDown">Slide Down</button>
+    <h1>Sliding Text</h1>
+    <p id="hiddenMessage">Click the button to how different slide methods operate</p>
+    <p style="display: none" id="hidden">Hidden message woohoo!</p>
+    <button type="button" name="button" id="before">Before</button>
+    <button type="button" name="button" id="after">After</button>
+    <button type="button" name="button" id="prepend">Prepend</button>
+    <button type="button" name="button" id="append">Append</button>
+    <h1>B.A.P.A</h1>
+    <p id="addP">Click the button to play with before, after, prepend and append!</p>
+    <h1 id="show">Hide and Show!</h1>
+    <p id="hide">Click this text to hide or show it!</p>
+    <button type="button" name="button" id="toggleTime">Toggle</button>
+    <h1>Toggle Time</h1>
+    <p class="toggleMe">Toggle me!</p>
+    <p style="display: none" class="toggleMe">I've been toggled!</p>
+    <h1 id="fadeIn">Faded!</h1>
+    <p id="fadeOut">Hover over me to fade in and out!</p>
+    <h1>Type Here!</h1>
+    <input type="text" name="text" value="Type here" id="typeHere">
+    <p id="valTest"></p>
+  </body>
+</html>

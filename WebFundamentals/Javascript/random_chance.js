@@ -15,4 +15,4 @@ function slot(quarters){
   }
 }
 // enter amount to run slot machine.
-slot(window.prompt("How many quarters do you have?"))
+slot(80)
