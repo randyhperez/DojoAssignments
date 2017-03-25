@@ -1,0 +1,39 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  border: 2px solid black;
+}
+
+td {
+  border-top: 1px solid black;
+}
+
+th, td {
+  padding: 10px 50px;
+}
+
+h1 {
+  margin-top: 50px;
+}
+
+hr {
+  margin-bottom: 10px;
+  width: 25%;
+}
+
+form {
+  text-align: right;
+  width: 25%
+}
+
+#btn {
+  margin-top: 10px;
+}
+
+p {
+  display: inline-block;
+  margin-top: 10px;
+}
