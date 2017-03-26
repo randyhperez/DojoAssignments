@@ -18,7 +18,7 @@ $(document).ready(function() {
       }
       types += "</ul>";
       // Append items to PokeDex
-      $('#pokedex').html(pokeName + pokeImg + types + height + weight)
+      $('#pokedex').append(pokeName + pokeImg + types + height + weight)
     }, 'json');
   });
 });

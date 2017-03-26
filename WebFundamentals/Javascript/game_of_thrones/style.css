@@ -1,0 +1,32 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  width: 500px;
+  height: 281px;
+}
+
+#info-card {
+  width: 30%;
+  height: 18%;
+  border: 3px solid black;
+  margin-left: 37%;
+  padding: 20px;
+  margin-top: 5%
+}
+
+  #info-card>h3 {
+    margin-bottom: 10px;
+  }
+
+  #info>p {
+    text-align: left;
+    margin-top: 20px;
+  }
+
+container {
+  padding: 50px;
+  text-align: center;
+}
