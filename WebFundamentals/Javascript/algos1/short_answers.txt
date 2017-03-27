@@ -1,0 +1,16 @@
+Source Code is a text listing of commands to be compiled or assembled into an executable computer program.
+Computers can execute and compile large amounts of data rapidly.
+The purpose of programming languages is to act as a go between language to communicate a set of instructions to a computer that humans can read.
+3 programming languages: PHP, python, Ruby. There are so many cause each do a different job or approach tasks differently.
+Variables area specific spot in memory with a label that you give it. They can store anything that you want.
+Single (=) sets the value of something and double equals (==) compares values loosely.
+Triple equals (===) compares values strictly.
+The dev console exists to show us errors or messages about our programs.
+Conditional statements are if/else if/else statements. Conditional statements can execute blocks of code based on whether the result of the conditional is true/false.
+For and while loops are good for making tasks quicker. If we know we want to execute something a certain amount of times or multiple times we can do it quicker and easier with a loop.
+While loops are better for when you don't know how many times you need to run through a loop.
+Functions are a set of source code that can be called numerous times. When called they run that source code.
+You can send and receive as many values as needed to/from a function.
+An array is a set of data that can store several data types. It's like a cabinet with several drawers and each drawer (index) stores data.
+a t diagram is a way to organize variables and their changing values.
+JS comments can be // or /* */
