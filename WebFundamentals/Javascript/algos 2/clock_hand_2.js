@@ -7,4 +7,4 @@ function clockHandAngles(seconds) {
   console.log("Hour Hand: " + hourHand + " degs. Minute Hand: " + minuteHand + " degs. Second Hand: " + secondHand + " degs.");
 }
 
-clockHandAngles(4569856.689653);
+clockHandAngles(119730);

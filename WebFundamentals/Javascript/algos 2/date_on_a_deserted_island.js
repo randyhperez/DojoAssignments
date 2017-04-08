@@ -138,42 +138,98 @@ function fullDate(dayNum) {
   return weekday + ', ' + month + ' ' + day + ', ' + year;
 }
 
+// function fullDate2(dayNum) {
+//   var weekday = weekDayName2(dayNum);
+//   var leapYear = Math.floor((dayNum / 365) / 4);
+//   var leapYear = Math.floor((dayNum /365) + 2017);
+//   console.log(leapYear);
+//   dayNum -= leapYear;
+//   var month = daysToMonth(dayNum);
+//   var year = 2017 + Math.floor(dayNum / 365);
+//   var year = 2017;
+//   var monthNum = 1;
+//   while (dayNum > 0) {
+//     dayNum = dayNum - monthtoDays(monthNum);
+//     monthNum = monthNum  + 1 > 12 ? monthNum + 1 - 12 : monthNum + 1;
+//   }
+//   var day = dayNum + monthtoDays(monthNum-1);
+//   return weekday + ', ' + month + ' ' + day + ', ' + year;
+// }
+//
+// console.log(fullDate2(8475))
+
 function fullDate2(dayNum) {
   var weekday = weekDayName2(dayNum);
-  var leapYear = Math.floor((dayNum / 365) / 4);
-  dayNum -= leapYear;
-  var month = daysToMonth(dayNum);
-  var year = 2017 + Math.floor(dayNum / 365);
-  var monthNum = 1;
+  var year = 2017
+  while (dayNum > 365) {
+    if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
+      dayNum -= 366;
+    }
+
+    else {
+      dayNum -= 365;
+    }
+    year++;
+  }
+  var month = daysToMonth(dayNum)
+  var monthNum = 1
   while (dayNum > 0) {
     dayNum = dayNum - monthtoDays(monthNum);
     monthNum = monthNum  + 1 > 12 ? monthNum + 1 - 12 : monthNum + 1;
   }
-  var day = dayNum + monthtoDays(monthNum-1);
-  return weekday + ', ' + month + ' ' + day + ', ' + year;
+  var day = dayNum + monthtoDays(monthNum - 1);
+  return weekday + ", " + month + " " + day + ", " + year;
 }
+
+// console.log(fullDate2(8475));
+
+
+// function fullDate3(dayNum) {
+//   var weekday = weekDayName2(dayNum);
+//   var month = daysToMonth(dayNum);
+//   var year = 2017
+//   var yearCalc = Math.floor(dayNum/365)
+//   var leapYear;
+//
+//   for (var i = 0; i < yearCalc; i++) {
+//     year++
+//     if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
+//       leapYear++
+//       dayNum--;
+//     }
+//   }
+//   var monthNum = 1;
+//   while (dayNum > 0) {
+//     dayNum = dayNum - monthtoDays(monthNum);
+//     monthNum = monthNum  + 1 > 12 ? monthNum + 1 - 12 : monthNum + 1;
+//   }
+//   var day = dayNum + monthtoDays(monthNum-1);
+//   return weekday + ', ' + month + ' ' + day + ', ' + year;
+// }
 
 function fullDate3(dayNum) {
   var weekday = weekDayName2(dayNum);
-  var month = daysToMonth(dayNum);
   var year = 2017
-  var yearCalc = Math.floor(dayNum/365)
-  var leapYear;
-
-  for (var i = 0; i < yearCalc; i++) {
-    year++
+  while (dayNum > 365) {
     if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
-      leapYear++
-      dayNum--;
+      dayNum -= 366;
     }
+
+    else {
+      dayNum -= 365;
+    }
+    year++;
   }
-  var monthNum = 1;
+  var month = daysToMonth(dayNum)
+  var monthNum = 1
   while (dayNum > 0) {
     dayNum = dayNum - monthtoDays(monthNum);
     monthNum = monthNum  + 1 > 12 ? monthNum + 1 - 12 : monthNum + 1;
   }
-  var day = dayNum + monthtoDays(monthNum-1);
-  return weekday + ', ' + month + ' ' + day + ', ' + year;
+  var day = dayNum + monthtoDays(monthNum - 1);
+  return weekday + ", " + month + " " + day + ", " + year;
 }
+
+
 
 console.log(fullDate3(139947));
