@@ -1,2 +1,4 @@
-aString = "Randy"
-print aString[0]
+x = 10
+aString = str(x)
+
+aString += "hello"
