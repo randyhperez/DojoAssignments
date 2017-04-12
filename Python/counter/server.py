@@ -14,12 +14,10 @@ def index():
 
 @app.route('/counter', methods=['POST'])
 def counter():
-    session['pageCount'] += 1
-    return redirect('/')
-
-@app.route('/reset', methods=['POST'])
-def reset():
-    session['pageCount'] = 0
+    if request.form['points'] == 'Reset':
+        session['pageCount'] = 0
+    elif request.form['points'] == 'Get +2':
+        session['pageCount'] += 1
     return redirect('/')
 
 app.run(debug=True)
