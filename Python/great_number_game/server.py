@@ -14,14 +14,18 @@ def index():
 
 @app.route('/guess', methods=['POST'])
 def guess():
-    if request.form['guess'] == '':
-        flash('You need to enter a number!')
+    session['guess'] = int(request.form['guess'])
+    if session['guess'] == '' or session['guess'] < 1 or session['guess'] > 100:
+        flash('You need to enter a number between 1 and 100!')
+
+    # elif request.form['guess'] > 100 or request.form['guess'] < 1:
+    #     flash('You need to enter a number between 1 and 100!')
     else:
         if 'counter' not in session:
             session['counter'] = 1
         else:
             session['counter'] += 1
-        session['guess'] = int(request.form['guess'])
+        # session['guess'] = int(request.form['guess'])
         print "type sesh guess", type(session['guess'])
         def randomNumber():
             session['random'] = random.randrange(1, 101)
