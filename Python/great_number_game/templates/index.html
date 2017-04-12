@@ -17,6 +17,7 @@
           <input type="submit" name="playagain" value="Play Again">
         </form>
       </div>
+      <h3>It only took {{session['counter']}} tries!</h3>
       {% elif session['result'] == "Too High" %}
         <div class="box" id="loser">
           <h1>Too High!</h1>

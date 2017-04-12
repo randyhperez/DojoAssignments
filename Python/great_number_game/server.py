@@ -17,30 +17,27 @@ def guess():
     if request.form['guess'] == '':
         flash('You need to enter a number!')
     else:
+        if 'counter' not in session:
+            session['counter'] = 1
+        else:
+            session['counter'] += 1
         session['guess'] = int(request.form['guess'])
         print "type sesh guess", type(session['guess'])
         def randomNumber():
             session['random'] = random.randrange(1, 101)
-        try:
-            session['random']
-        except KeyError:
+        if 'random' not in session:
             randomNumber()
-        # session['random'] = randomNumber
         print type(request.form['guess'])
         if session['random'] == session['guess']:
             resultPrint = "correct"
-            session.pop('random')
         elif session['guess'] > session['random']:
             resultPrint = "Too High"
         elif session['guess'] < session['random']:
             resultPrint = "Too Low"
         session['result'] = resultPrint
         print session['result']
-        print "guess is", session['guess']
-        try:
-            print "rando sesh is", session['random']
-        except:
-            pass
+        print "guess", session['guess']
+        print "random", session['random']
     return redirect('/')
 
 @app.route('/playagain', methods=['POST'])
