@@ -1,0 +1,21 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  text-align: center;
+  padding-top: 100px;
+}
+
+h3 {
+  margin: 10px 0px 25px 0px;
+}
+
+input {
+  margin-bottom: 10px;
+}
+
+input[type=submit] {
+  width: 50px;
+}
