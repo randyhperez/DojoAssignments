@@ -18,6 +18,7 @@ h3 {
   border: 5px solid black;
   display: inline-block;
   margin-top: 20px;
+  background-color: maroon;
 }
 
   .box>h1 {
@@ -46,8 +47,4 @@ input[type=submit] {
   height: 30px;
   vertical-align: middle;
   margin-top: 10px;
-}
-
-#loser {
-  background-color: maroon;
 }

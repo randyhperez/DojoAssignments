@@ -19,19 +19,18 @@
       </div>
       <h3>It only took {{session['counter']}} tries!</h3>
       {% elif session['result'] == "Too High" %}
-        <div class="box" id="loser">
+        <div class="box">
           <h1>Too High!</h1>
         </div>
       {% elif session['result'] == "Too Low" %}
-        <div class="box" id="loser">
+        <div class="box">
           <h1>Too Low!</h1>
         </div>
       {% endif %}
     {% endif %}
-    <!-- <p>{{session['result']}}</p> -->
     {% if session['result'] != "correct" %}
       <form action="/guess" method="post">
-        <input type="number" name="guess" value=""><br>
+        <input type="number" autofocus="autofocus"name="guess" value="" min="1" max="100"><br>
         <input type="submit" name="submit" value="Submit">
       </form>
       {% with messages = get_flashed_messages() %}
