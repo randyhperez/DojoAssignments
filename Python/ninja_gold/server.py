@@ -7,20 +7,19 @@ app.secret_key = 'D@7N1nj@601d'
 
 @app.route('/')
 def index():
-    return render_template('index.html')
-
-@app.route('/process_money', methods=['POST'])
-def process_money():
-    # Create keys in session if non existent
+    # Create keys/value in session if non existent
     if 'gold' not in session:
-        print "no gold"
         session['gold'] = 0
-        print session['gold']
     if 'earnedAmt' not in session:
         session['earnedAmt'] = 0
     if 'msg' not in session:
         session['msg'] = []
-    # set previous amount and capture date of action
+    print session
+    return render_template('index.html')
+
+@app.route('/process_money', methods=['POST'])
+def process_money():
+    #store previous amt and date of action
     prevAmt = session['gold']
     session['tDate'] = time.strftime("%Y/%d/%m %I:%M %p")
     # logic for action
@@ -56,7 +55,6 @@ def process_money():
         if session['earnedAmt'] == 0:
             pass
         elif session['earnedAmt'] < 0:
-            print "earned if"
             session['msg'].append(str('Entered a ' + session['building'] + ' and lost ' + str(session['earnedAmt']) + " golds... Ouch.. " + session['tDate']))
             session['earnedAmt'] = 0
         else:
@@ -67,6 +65,7 @@ def process_money():
 
 @app.route('/reset', methods=['POST'])
 def reset():
+    # reset sesh
     session.clear()
     return redirect('/')
 
