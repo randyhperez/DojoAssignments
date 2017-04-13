@@ -49,7 +49,7 @@ def process_money():
         else:
             session['gold'] -= random.randrange(1,50)
             session['earnedAmt'] = session['gold'] - prevAmt
-    # store button value and append msg based on results of button action
+    # store building value and append msg based on results of button action
     session['building'] = request.form['building']
     if session['building'] == 'casino':
         print 'hello', session['earnedAmt']
