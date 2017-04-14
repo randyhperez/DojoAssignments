@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Registration Form</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css')}}">
+  </head>
+  <body>
+    <form action="/validate_submit" method="post">
+      <label for="first name">First Name:</label>
+      <input type="text" name="first_name" value="" required>
+      <p class="red">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              {% if category == 'first_name' %}
+                {{message}}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      </p>
+      <label for="last name">Last Name:</label>
+      <input type="text" name="last_name" value="" required>
+      <p class="red">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              {% if category == 'last_name' %}
+                {{message}}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      </p>
+      <label for="email">Email Address:</label>
+      <input type="email" name="email" value="" required>
+      <p class="red">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              {% if category == 'email' %}
+                {{message}}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      </p>
+      <label for="p1">Password:</label>
+      <input type="password" name="password" value="" minlength="9" required><br>
+      <label for="p2">Confirm Password:</label>
+      <input type="password" name="confirm_password" value="" minlength="9" required>
+      <p class="red">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              {% if category == 'password' %}
+                {{message}}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      </p>
+      <label for="date">Birth Date:</label>
+      <input type="date" name="date" value="" required>
+      <p class="red">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              {% if category == 'date' %}
+                {{message}}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      </p>
+      <input type="submit" name="submit" value="Submit">
+      <p class="green">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              {% if category == 'success' %}
+                {{message}}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      </p>
+    </form>
+  </body>
+</html>
