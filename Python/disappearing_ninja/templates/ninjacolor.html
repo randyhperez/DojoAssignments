@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Which Ninja</title>
+  </head>
+  <body>
+    {% if ninjacolor %}
+      <img src="{{ url_for('static', filename=img)}}" alt="{{peep}} the Teenage Mutant Ninja Turtle">
+      <h3>Woah, it's {{turtle}}</h3>
+    {% endif %}
+  </body>
+</html>

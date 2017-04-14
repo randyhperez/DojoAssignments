@@ -8,8 +8,10 @@
   <body>
     <div id="form_box">
       <form action="/result" method="post">
-        Your Name: <input type="text" name="name"><br>
-        Dojo Location: <select name="location">
+        <label for="name">You Name:</label>
+        <input type="text" class="space" name="name" required><br>
+        <label for="location">Dojo Location:</label>
+        <select class="space" name="location">
           <option value="Seattle">Seattle</option>
           <option value="Chicago">Chicago</option>
           <option value="Washington DC">Washington DC</option>
@@ -18,18 +20,26 @@
           <option value="Silicon Valley">Silicon Valley</option>
           <option value="Online">Online</option>
         </select><br>
-        Favorite Language: <select name="language">
-          <option value="Python">Python</option>
-          <option value="JavaScript">JavaScript</option>
-          <option value="Ruby">Ruby</option>
-          <option value="PHP">PHP</option>
-          <option value="Swift">Swift</option>
-          <option value="C#">C#</option>
+          <label for="lang">Favorite Language</label>
+          <select class="space" name="language">
+            <option value="Python">Python</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="Ruby">Ruby</option>
+            <option value="PHP">PHP</option>
+            <option value="Swift">Swift</option>
+            <option value="C#">C#</option>
         </select><br>
-        Comment (Optional):<br>
-        <textarea type="text" name="comment" rows="8" cols="60" value=""></textarea><br>
+        <label for="comments">Comments:</label><br>
+        <textarea type="text" class="space" name="comment" rows="8" cols="60" maxlength="120" value=""></textarea><br>
         <input type="Submit" name="submit" value="Submit">
       </form>
     </div>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <p>{{message}}</p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
   </body>
 </html>
