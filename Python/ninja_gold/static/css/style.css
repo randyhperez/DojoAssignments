@@ -26,7 +26,7 @@ body {
     margin-bottom: 25px;
   }
 
-#activities {
+.activities {
   width: 899px;
   height: 300px;
   border: 2px solid black;
@@ -35,14 +35,15 @@ body {
   overflow: scroll;
 }
 
-#red {
+.red {
   color: maroon;
 }
 
-#green {
+.green {
   color: green;
 }
 
-#flash {
+.flash {
   margin-bottom: 20px;
+  color: red;
 }

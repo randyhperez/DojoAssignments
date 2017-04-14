@@ -11,7 +11,7 @@ def index():
     if 'gold' not in session:
         session['gold'] = 0
     if 'earnedAmt' not in session:
-        session['earnedAmt'] = 0
+        earnedAmt = 0
     if 'msg' not in session:
         session['msg'] = []
     print session
@@ -25,13 +25,10 @@ def process_money():
     # logic for action
     if request.form['building'] == 'farm':
         session['gold'] += random.randrange(10,21)
-        # session['earnedAmt'] = session['gold'] - prevAmt
     elif request.form['building'] == 'cave':
         session['gold'] += random.randrange(5,11)
-        # session['earnedAmt'] = session['gold'] - prevAmt
     elif request.form['building'] == 'house':
         session['gold'] += random.randrange(1,6)
-        # session['earnedAmt'] = session['gold'] - prevAmt
     # validate casino/gold amt
     elif request.form['building'] == 'casino' and session['gold'] < 1:
         flash('You need at least 1 gold to play at the casino. Go get gold!')
@@ -41,27 +38,24 @@ def process_money():
         winLoss = random.randrange(1,101)
         if winLoss <= 25:
             session['gold'] += random.randrange(1,50)
-            # session['earnedAmt'] = session['gold'] - prevAmt
         elif winLoss > 25 and session['gold'] < 50:
             session['gold'] -= random.randrange(1, session['gold'] + 1)
-            # session['earnedAmt'] = session['gold'] - prevAmt
         else:
             session['gold'] -= random.randrange(1,50)
-            # session['earnedAmt'] = session['gold'] - prevAmt
-    # store building value and append msg based on results of button action
-    session['earnedAmt'] = session['gold'] - prevAmt
+    # store building/earnedAmt value and append msg based on results of button action
+    earnedAmt = session['gold'] - prevAmt
     session['building'] = request.form['building']
     if session['building'] == 'casino':
-        print 'hello', session['earnedAmt']
-        if session['earnedAmt'] == 0:
+        print 'hello', earnedAmt
+        if earnedAmt == 0:
             pass
-        elif session['earnedAmt'] < 0:
-            session['msg'].append(str('Entered a ' + session['building'] + ' and lost ' + str(session['earnedAmt']) + " golds... Ouch.. " + session['tDate']))
-            session['earnedAmt'] = 0
+        elif earnedAmt < 0:
+            session['msg'].append('<p class="red">' + 'Entered a ' + session['building'] + ' and lost ' + str(earnedAmt) + " golds... Ouch.. " + session['tDate'] + '</p>')
+            earnedAmt = 0
         else:
-            session['msg'].append(str('Entered a ' + session['building'] + ' and won ' + str(session['earnedAmt']) + " golds! Great success!!  " + session['tDate']))
+            session['msg'].append('<p class="green">' + 'Entered a ' + session['building'] + ' and won ' + str(earnedAmt) + " golds! Great success!!  " + session['tDate'] + '</p>')
     else:
-        session['msg'].append(str('Earned ' + str(session['earnedAmt']) + " golds from the " + session['building'] + " " + session['tDate']))
+        session['msg'].append('<p class="green">' +'Earned ' + str(earnedAmt) + " golds from the " + session['building'] + " " + session['tDate'] + '</p>')
     return redirect('/')
 
 @app.route('/reset', methods=['POST'])
