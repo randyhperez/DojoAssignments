@@ -25,13 +25,13 @@ def process_money():
     # logic for action
     if request.form['building'] == 'farm':
         session['gold'] += random.randrange(10,21)
-        session['earnedAmt'] = session['gold'] - prevAmt
+        # session['earnedAmt'] = session['gold'] - prevAmt
     elif request.form['building'] == 'cave':
         session['gold'] += random.randrange(5,11)
-        session['earnedAmt'] = session['gold'] - prevAmt
+        # session['earnedAmt'] = session['gold'] - prevAmt
     elif request.form['building'] == 'house':
         session['gold'] += random.randrange(1,6)
-        session['earnedAmt'] = session['gold'] - prevAmt
+        # session['earnedAmt'] = session['gold'] - prevAmt
     # validate casino/gold amt
     elif request.form['building'] == 'casino' and session['gold'] < 1:
         flash('You need at least 1 gold to play at the casino. Go get gold!')
@@ -41,14 +41,15 @@ def process_money():
         winLoss = random.randrange(1,101)
         if winLoss <= 25:
             session['gold'] += random.randrange(1,50)
-            session['earnedAmt'] = session['gold'] - prevAmt
+            # session['earnedAmt'] = session['gold'] - prevAmt
         elif winLoss > 25 and session['gold'] < 50:
             session['gold'] -= random.randrange(1, session['gold'] + 1)
-            session['earnedAmt'] = session['gold'] - prevAmt
+            # session['earnedAmt'] = session['gold'] - prevAmt
         else:
             session['gold'] -= random.randrange(1,50)
-            session['earnedAmt'] = session['gold'] - prevAmt
+            # session['earnedAmt'] = session['gold'] - prevAmt
     # store building value and append msg based on results of button action
+    session['earnedAmt'] = session['gold'] - prevAmt
     session['building'] = request.form['building']
     if session['building'] == 'casino':
         print 'hello', session['earnedAmt']

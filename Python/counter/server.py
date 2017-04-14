@@ -5,12 +5,10 @@ app.secret_key = "supersecretkeyyo"
 
 @app.route('/')
 def index():
+    if 'pageCount' not in session:
+        session['pageCount'] = 1
     session['pageCount'] += 1
-    # try:
-    #     session['pageCount'] += 1
-    # except:
-    #     session['pageCount'] = 1
-    return render_template('index.html', counter=session['pageCount'])
+    return render_template('index.html')
 
 @app.route('/counter', methods=['POST'])
 def counter():
