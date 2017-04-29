@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Page</title>
+  </head>
+  <body>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <p>{{message}}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <form class="" action="/friends/{{verify['id']}}" method="post">
+      <label for="first_name">First Name: </label>
+      <input type="text" name="first_name" value="{{verify['first_name']}}" minlength="2">
+      <br>
+      <label for="last_name">Last Name: </label>
+      <input type="text" name="last_name" value="{{verify['last_name']}}" minlength="2">
+      <br>
+      <label for="email">Email: </label>
+      <input type="email" name="email" value="{{verify['email']}}">
+      <br>
+      <input type="submit" name="update" value="Update">
+    </form>
+    <form class="" action="/" method="get">
+      <input type="submit" name="cancel" value="Cancel">
+    </form>
+  </body>
+</html>

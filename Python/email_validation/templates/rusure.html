@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Are you Sure</title>
+  </head>
+  <body>
+    <p>Are you sure you want to delete: {{email_checker}}</p>
+    <form class="" action="/delete" method="post">
+      <input type="hidden" name="delete" value="{{delete_id}}">
+      <input type="submit" name="test" value="Yes">
+    </form>
+    <form class="" action="/no" method="post">
+      <input type="submit" name="submit" value="No">
+    </form>
+  </body>
+</html>

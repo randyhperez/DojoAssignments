@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Success</title>
+  </head>
+  <body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          {% if category == 'success' or category == 'deleted' %}
+            <h3>{{message}}</h3>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <table>
+      <thead>
+        <th>Email</th>
+        <th>Created</th>
+      </thead>
+      <tbody>
+        {% for email in select_info %}
+          <tr>
+            <td>{{email['email']}}</td>
+            <td>{{email['created_at']}}</td>
+            <td>
+              <form class="" action="/deletecheck" method="post">
+                <input type="hidden" name="id" value="{{email['id']}}">
+                <input type="hidden" name="eName" value="{{email['email']}}">
+                <input type="submit" name="delete" value="Delete">
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="/">Enter a a new email address</a>
+  </body>
+</html>
