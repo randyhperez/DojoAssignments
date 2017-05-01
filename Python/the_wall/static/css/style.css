@@ -1,0 +1,22 @@
+/**{
+  margin: 0px;
+  padding: 0px;
+}*/
+
+header {
+  height: 10%;
+  vertical-align: center;
+}
+
+  header>h4, header>p, .header_submit {
+    display: inline-block;
+  }
+
+  header>p {
+    margin-left: 54%;
+    vertical-align: center;
+  }
+
+.header_submit {
+  margin-left: 1%;
+}
