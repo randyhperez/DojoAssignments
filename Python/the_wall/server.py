@@ -132,7 +132,7 @@ def comment(id):
     return redirect('/wall/' + str(session['id']))
 
 #log user out with sesh clear
-@app.route('/logout', methods=['POST'])
+@app.route('/logout')
 def logout():
     session.clear()
     flash("You have been logged out")

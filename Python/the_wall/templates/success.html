@@ -9,39 +9,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/materialize.min.js')}}"></script>
+    <script type="text/javascript">
+      $(document).ready(function functionName() {
+         $(".button-collapse").sideNav();
+      })
+    </script>
   </head>
   <body>
-    <header class="#90caf9 blue lighten-3">
-      <h4>Silicon Valley Wall</h4>
-      <p>Welcome {{user['first_name']}}!</p>
-      <form class="header_submit" action="/logout" method="post">
-        <input class="waves-effect waves-light btn blue" type="submit" name="logout" value="Logout">
-      </form>
-    </header>
+      <nav>
+        <div class="nav-wrapper #4db6ac teal lighten-2">
+          <a href="#" class="brand-logo">The Wall</a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/logout" class="btn waves-effect waves-light white teal-text">Logout</a></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="/logout">Logout</a></li>
+          </ul>
+        </div>
+      </nav>
     <div class="container">
+      <p>Welcome {{user['first_name']}}!</p>
       <form class="post_message" action="/message" method="post">
-        <label for="message">Post a message:</label>
+        <label for="message">Post a comment:</label>
         <br>
         <textarea name="message" rows="8" cols="80"></textarea>
         <br>
-        <input type="submit" name="message" value="Post a message">
+        <input class="btn" type="submit" name="message" value="Comment">
       </form>
       {% for message in msgs %}
         <h5>{{message['name']}} {{message['created_at'].strftime('%B %d %Y')}}</h5>
         <p>{{message['message']}}</p>
         {% for comment in comments %}
           {% if message['id'] == comment['messages_id'] %}
-            <h6>{{comment['name']}} {{comment['created_at'].strftime('%B %d %Y')}}</h6>
-            <p>{{comment['comments']}}</p>
+          <div class="row">
+            <div class="col s11 offset-s1">
+              <h6>{{comment['name']}} {{comment['created_at'].strftime('%B %d %Y')}}</h6>
+              <p class="cols s2">{{comment['comments']}}</p>
+            </div>
+          </div>
           {% endif %}
       {% endfor %}
-      <form class="" action="/comment/{{message['id']}}" method="post">
-        <label for="comment">Post a comment</label>
-        <br>
-        <textarea name="comment" rows="8" cols="80"></textarea>
-        <br>
-        <input type="submit" name="comment" value="Post a comment">
-      </form>
+      <div class="row">
+        <div class="col s11 offset-s1">
+          <form class="" action="/comment/{{message['id']}}" method="post">
+            <label for="comment">Post a reply</label>
+            <br>
+            <textarea name="comment" rows="8" cols="80"></textarea>
+            <br>
+            <!-- <div class="row">
+              <div class="col s2 offset-s10 right-align"> -->
+                <input class="btn" type="submit" name="comment" value="Reply">
+              <!-- </div>
+            </div> -->
+          </form>
+        </div>
+      </div>
       {% endfor %}
     </div>
   </body>

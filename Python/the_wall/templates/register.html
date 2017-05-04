@@ -3,35 +3,62 @@
   <head>
     <meta charset="utf-8">
     <title>Registration</title>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/materialize.min.css')}}"  media="screen,projection"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/materialize.min.js')}}"></script>
+    <script type="text/javascript">
+      $(document).ready(function functionName() {
+         $(".button-collapse").sideNav();
+      })
+    </script>
   </head>
   <body>
-    <form class="" action="/register" method="post">
-      <label for="first_name">First Name: </label>
-      <input type="text" name="first_name" value="">
-      <br>
-      <label for="last_name">Last Name: </label>
-      <input type="text" name="last_name" value="">
-      <br>
-      <label for="email">Email: </label>
-      <input type="email" name="email" value="">
-      <br>
-      <label for="pass">Password</label>
-      <input type="password" name="password" value="">
-      <br>
-      <label for="conf_password">Confirm: </label>
-      <input type="password" name="conf_password" value="">
-      <br>
-      {% with messages = get_flashed_messages() %}
-        {% if messages %}
-          {% for message in messages %}
-            <p>{{message}}</p>
-          {% endfor %}
-        {% endif %}
-      {% endwith %}
-      <input type="submit" name="register" value="Register">
-    </form>
-    <form class="" action="/" method="get">
-      <input type="submit" name="cancel" value="Cancel">
-    </form>
+    <nav>
+      <div class="nav-wrapper #4db6ac teal lighten-2">
+        <a href="/" class="brand-logo">The Wall</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/">Home</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+         <li><a href="/">Home</a></li>
+       </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col s10 offset-s1">
+          <form class="" action="/register" method="post">
+            <label for="first_name">First Name: </label>
+            <input type="text" name="first_name" value="">
+            <br>
+            <label for="last_name">Last Name: </label>
+            <input type="text" name="last_name" value="">
+            <br>
+            <label for="email">Email: </label>
+            <input type="email" name="email" value="">
+            <br>
+            <label for="pass">Password</label>
+            <input type="password" name="password" value="">
+            <br>
+            <label for="conf_password">Confirm: </label>
+            <input type="password" name="conf_password" value="">
+            <br>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <p class="red-text">{{message}}</p>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <input class="btn" type="submit" name="register" value="Register">
+            <a href="/" class="btn">Cancel</a>
+          </form>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

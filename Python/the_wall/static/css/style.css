@@ -1,22 +1,7 @@
-/**{
-  margin: 0px;
-  padding: 0px;
-}*/
-
-header {
-  height: 10%;
-  vertical-align: center;
+h6, h5, h4 {
+  font-weight: 500;
 }
 
-  header>h4, header>p, .header_submit {
-    display: inline-block;
-  }
+h4 {
 
-  header>p {
-    margin-left: 54%;
-    vertical-align: center;
-  }
-
-.header_submit {
-  margin-left: 1%;
 }
