@@ -28,7 +28,7 @@ def validation():
         email = request.form['email']
         password = request.form['password']
         #Query DB for user login verification
-        check_query = ("SELECT id, email, pw_hash FROM users WHERE email = :email")
+        check_query = "SELECT id, email, pw_hash FROM users WHERE email = :email"
         check_data = {'email': email}
         checker = mysql.query_db(check_query, check_data)
         #verify email and password match DB data/user input.
@@ -71,7 +71,7 @@ def register():
             #pw encryption
             pw_hash = bcrypt.generate_password_hash(password)
             #create user in DB
-            new_query = ("INSERT INTO users(first_name, last_name, email, pw_hash, created_at, updated_at) VALUES(:fName, :lName, :email, :pw_hash, NOW(), NOW())")
+            new_query = "INSERT INTO users(first_name, last_name, email, pw_hash, created_at, updated_at) VALUES(:fName, :lName, :email, :pw_hash, NOW(), NOW())"
             new_data = {
                         'fName': fName,
                         'lName': lName,
@@ -80,7 +80,7 @@ def register():
                        }
             mysql.query_db(new_query, new_data)
             #store ID in session to login
-            success_query= ("SELECT id FROM users WHERE email = :email")
+            success_query= "SELECT id FROM users WHERE email = :email"
             success = mysql.query_db(success_query, new_data)
             session['id'] = str(success[0]['id'])
             return redirect('/wall/' + str(success[0]['id']))
@@ -97,11 +97,11 @@ def success(id):
     #if correct user logged in
     else:
         #Query DB to display welcome msg
-        user_query = ("SELECT first_name FROM users WHERE id = :id")
+        user_query = "SELECT first_name FROM users WHERE id = :id"
         user_data = {'id': id}
         user = mysql.query_db(user_query, user_data)
         #Query DB to display posted messages
-        msg_query = ("SELECT messages.id, messages.message, messages.created_at, CONCAT(first_name, ' ', last_name) as name FROM messages JOIN users ON messages.users_id = users.id")
+        msg_query = "SELECT messages.id, messages.message, messages.created_at, CONCAT(first_name, ' ', last_name) as name FROM messages JOIN users ON messages.users_id = users.id"
         msgs = mysql.query_db(msg_query)
         #Query DB to display posted comments on messages
         comment_query = ("SELECT comments.comments, comments.created_at,  comments.messages_id, CONCAT(first_name, ' ', last_name) AS name FROM comments JOIN users ON comments.users_id = users.id")
@@ -111,7 +111,7 @@ def success(id):
 @app.route('/message', methods=['POST'])
 def message():
     #Insert Message into DB with composing user's ID
-    msg_query = ("INSERT INTO messages(message, users_id, created_at, updated_at) VALUES(:msg, :user_id, NOW(), NOW())")
+    msg_query = "INSERT INTO messages(message, users_id, created_at, updated_at) VALUES(:msg, :user_id, NOW(), NOW())"
     msg_data = {
                 'msg': request.form['message'],
                 'user_id': session['id']
@@ -122,7 +122,7 @@ def message():
 @app.route('/comment/<id>', methods=['POST'])
 def comment(id):
     #Insert comment into DB with proper User and msg ID's
-    comment_query = ("INSERT INTO comments(comments, users_id, messages_id, created_at, updated_at) VALUES(:comments, :users_id, :messages_id, NOW(), NOW())")
+    comment_query = "INSERT INTO comments(comments, users_id, messages_id, created_at, updated_at) VALUES(:comments, :users_id, :messages_id, NOW(), NOW())"
     comment_data = {
                     'comments': request.form['comment'],
                     'users_id': session['id'],
