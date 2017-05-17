@@ -16,6 +16,9 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+handler404 = 'apps.get_ninja_gold.views.my_custom_page_not_found_view'
+handler500 = 'apps.get_ninja_gold.views.my_custom_error_view'
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('apps.ninjas.urls')),

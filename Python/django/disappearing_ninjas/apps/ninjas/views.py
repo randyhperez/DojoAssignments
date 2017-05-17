@@ -38,3 +38,12 @@ def ninjaColor(request, color):
             'turtle': 'April'
         }
     return render(request, 'ninjas/ninjacolor.html', context)
+
+# HTTP Error 404
+def my_custom_page_not_found_view(request):
+    print "&"*20
+    print "Inside of the my_custom_page_not_found_view"
+    response = render_to_response('404.html', context=RequestContext(request))
+    response.status_code = 404
+    print response
+    return response
