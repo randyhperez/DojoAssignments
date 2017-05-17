@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ninja Gold</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type"text/css" href="{% static 'gold/css/style.css' %}">
+  </head>
+  <body>
+    <p>Your Gold: {{request.session.gold}}</p>
+    <div class="box">
+      <h3>Farm</h3>
+      <p>(earns 10-20 golds)</p>
+      <form action="{% url 'processMoney' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="farm" value="Find Gold!">
+      </form>
+    </div>
+    <div class="box">
+      <h3>Cave</h3>
+      <p>(earns 5-10 golds)</p>
+      <form action="{% url 'processMoney' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="cave" value="Find Gold!">
+      </form>
+    </div>
+    <div class="box">
+      <h3>House</h3>
+      <p>(earns 2-5 golds)</p>
+      <form action="{% url 'processMoney' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="house" value="Find Gold!">
+      </form>
+    </div>
+    <div class="box">
+      <h3>Casino</h3>
+      <p>(eanrs/takes 0 - 50 golds)</p>
+      <form action="{% url 'processMoney' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="casino" value="Find Gold!">
+      </form>
+    </div>
+    <p>Activities:</p>
+    <br>
+    <div class="activities">
+      {% autoescape off %}
+        {% for msg in request.session.msg %}
+          {{msg}}
+        {% endfor %}
+      {% endautoescape %}
+    </div>
+    {% if messages %}
+        {% for message in messages %}
+        <p{% if message.tags %} class="{{ message.tags }} flash"{% endif %}>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    <form class="" action="{% url 'reset' %}" method="post">
+      {% csrf_token %}
+      <input type="submit" name="reset" value="Reset">
+    </form>
+  </body>
+</html>

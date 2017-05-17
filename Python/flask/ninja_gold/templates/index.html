@@ -6,14 +6,14 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css')}}">
   </head>
   <body>
-    <form class="" action="/process_money" method="post">
+    <form class="" action="{% url 'process_money' %}" method="post">
       <label for="gold">Your Gold:</label>
       <input type="text" name="gold" value="{{session['gold']}}" readonly="readonly">
     </form>
       <div class="box">
         <h3>Farm</h3>
         <p>(earns 10-20 golds)</p>
-        <form class="" action="/process_money" method="post">
+        <form class="" action="{% url 'process_money' %}" method="post">
           <input type="hidden" name="building" value="farm">
           <input type="submit" name="farm" value="Find Gold!">
         </form>
@@ -21,7 +21,7 @@
       <div class="box">
         <h3>Cave</h3>
         <p>(earns 5-10 golds)</p>
-        <form class="" action="/process_money" method="post">
+        <form class="" action="{% url 'process_money' %}" method="post">
           <input type="hidden" name="building" value="cave">
           <input type="submit" name="cave" value="Find Gold!">
         </form>
@@ -29,7 +29,7 @@
       <div class="box">
         <h3>House</h3>
         <p>(earns 2-5 golds)</p>
-        <form class="" action="/process_money" method="post">
+        <form class="" action="{% url 'process_money' %}" method="post">
           <input type="hidden" name="building" value="house">
           <input type="submit" name="house" value="Find Gold!">
         </form>
@@ -37,7 +37,7 @@
       <div class="box">
         <h3>Casino</h3>
         <p>(earns/takes 0-50 golds)</p>
-        <form class="" action="/process_money" method="post">
+        <form class="" action="{% url 'process_money' %}" method="post">
           <input type="hidden" name="building" value="casino">
           <input type="submit" name="casino" value="Find Gold!">
         </form>
