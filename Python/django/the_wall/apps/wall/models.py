@@ -12,7 +12,13 @@ class Users(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     Updated_at = models.DateTimeField(auto_now=True)
 class Messages(models.Model):
-    user_id = models.FOreignKey(Users)
+    user_id = models.ForeignKey(Users)
     message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    Updated_at = models.DateTimeField(auto_now=True)
+class Comments(models.Model):
+    message_id = models.ForeignKey(Messages)
+    user_id = models.ForeignKey(Users)
+    comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     Updated_at = models.DateTimeField(auto_now=True)

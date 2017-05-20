@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Username Validation</title>
+  </head>
+  <body>
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    <form  action="{% url 'validate' %}" method="post">
+      {% csrf_token %}
+      <label for="username">Username: </label>
+      <input type="text" name="username" value="">
+      <br>
+      <input type="submit" name="submit" value="submit">
+    </form>
+  </body>
+</html>
