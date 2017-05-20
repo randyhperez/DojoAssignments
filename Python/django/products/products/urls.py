@@ -1,4 +1,4 @@
-"""disappearing_ninjas URL Configuration
+"""products URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -16,10 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-handler404 = 'apps.ninjas.views.my_custom_page_not_found_view'
-handler500 = 'apps.ninjas.views.my_custom_error_view'
-
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('apps.ninjas.urls')),
+    url(r'^', include('apps.product.urls')),
 ]

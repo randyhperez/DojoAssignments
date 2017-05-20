@@ -1,4 +1,4 @@
-"""disappearing_ninjas URL Configuration
+"""books URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -14,12 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-from django.contrib import admin
-
-handler404 = 'apps.ninjas.views.my_custom_page_not_found_view'
-handler500 = 'apps.ninjas.views.my_custom_error_view'
+# from django.contrib import admin
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^', include('apps.ninjas.urls')),
+    # url(r'^admin/', admin.site.urls),
+    url(r'^', include('apps.book.urls')),
 ]

@@ -47,3 +47,12 @@ def my_custom_page_not_found_view(request):
     response.status_code = 404
     print response
     return response
+
+# HTTP Error 500
+def my_custom_error_view(request):
+    print "*"*20
+    print "Inside of the my_custom_error_view"
+    response = render_to_response('500.html', context=RequestContext(request))
+    response.status_code = 500
+    print response
+    return response
