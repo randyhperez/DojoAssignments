@@ -22,3 +22,14 @@ def validate(request):
             }
             return render(request, 'validationApp/success.html', context)
     return redirect('/')
+
+def verify(request, id):
+    context = {
+        'user': User.objects.get(id=id)
+    }
+    return render(request, 'validationApp/verify.html', context)
+
+def delete(request, id):
+    if request.POST.get('yes'):
+        User.objects.filter(id=id).delete()
+    return redirect ('/success')

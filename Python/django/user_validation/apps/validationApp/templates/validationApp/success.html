@@ -13,6 +13,7 @@
         <tr>
           <td>{{user.name}}</td>
           <td>{{user.created_at}}</td>
+          <td><a href="{% url 'verify' user.id %}">delete</a></td>
         </tr>
         {% endfor %}
       </tbody>
