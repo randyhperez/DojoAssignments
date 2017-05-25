@@ -55,7 +55,7 @@ class SecretsDBManager(models.Manager):
     def post_secret(self, text, id):
         Secrets.objects.create(secret=text, users=Users.objects.get(id=id))
     def get_secrets(self):
-        return Secrets.objects.all()
+        return Secrets.objects.all().order_by('-created_at')
 
 class LikesDBManager(models.Manager):
     def like_secret(self, users_id, secrets_id):
@@ -79,12 +79,12 @@ class Secrets(models.Model):
     secret = models.TextField(default=None)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    users = models.ForeignKey(Users, related_name='users_secrets')
+    users = models.ForeignKey(Users, related_name='users_secrets', on_delete=models.CASCADE)
     objects = SecretsDBManager()
 
 class Likes(models.Model):
-    users = models.ForeignKey(Users, related_name='users_likes')
-    secrets = models.ForeignKey(Secrets, related_name='secrets_likes')
+    users = models.ForeignKey(Users, related_name='users_likes', on_delete=models.CASCADE)
+    secrets = models.ForeignKey(Secrets, related_name='secrets_likes', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = LikesDBManager()

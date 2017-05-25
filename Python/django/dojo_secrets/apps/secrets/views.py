@@ -61,6 +61,9 @@ def delete(request, secret_id):
         Secrets.objects.filter(id=secret_id).delete()
     return redirect('secrets')
 
+def popular(request):
+    pass
+
 
 def logout(request):
     request.session.clear()
