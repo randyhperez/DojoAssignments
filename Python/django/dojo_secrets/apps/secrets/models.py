@@ -54,17 +54,18 @@ class UsersDBManager(models.Manager):
 class SecretsDBManager(models.Manager):
     def post_secret(self, text, id):
         Secrets.objects.create(secret=text, users=Users.objects.get(id=id))
+    def popular_secrets(self):
+        return Secrets.objects.all().order_by('-secrets_likes')
     def get_secrets(self):
-        return Secrets.objects.all().order_by('-created_at')
+        return Secrets.objects.all().order_by('-created_at')[:10]
 
 class LikesDBManager(models.Manager):
     def like_secret(self, users_id, secrets_id):
         Likes.objects.create(users=Users.objects.get(id=users_id), secrets=Secrets.objects.get(id=secrets_id))
+    def get_user_likes(self, id):
+        Likes.objects.filter(id=id)
     def get_likes(self):
         return Likes.objects.all()
-
-
-
 
 class Users(models.Model):
     fName = models.CharField(max_length=50)

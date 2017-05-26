@@ -41,6 +41,7 @@ def secrets(request):
     context = {
         'secrets': Secrets.objects.get_secrets(),
         'likes': Likes.objects.get_likes(),
+        'user_likes': Likes.objects.get_user_likes(request.session['id'])
     }
     likes = Likes.objects.get_likes()
     for like in likes:
@@ -62,7 +63,12 @@ def delete(request, secret_id):
     return redirect('secrets')
 
 def popular(request):
-    pass
+    if 'id' not in request.session:
+        return redirect('/')
+    context = {
+        'secrets': Secrets.objects.popular_secrets()
+    }
+    return render(request, 'secrets/popular.html', context)
 
 
 def logout(request):
