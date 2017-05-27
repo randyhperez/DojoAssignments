@@ -56,6 +56,8 @@ class SecretsDBManager(models.Manager):
         Secrets.objects.create(secret=text, users=Users.objects.get(id=id))
     def popular_secrets(self):
         return Secrets.objects.all().order_by('-secrets_likes')
+    def test(self, id):
+        return Secrets.objects.filter(secrets_likes__users__id=id)
     def get_secrets(self):
         return Secrets.objects.all().order_by('-created_at')[:10]
 
@@ -63,7 +65,7 @@ class LikesDBManager(models.Manager):
     def like_secret(self, users_id, secrets_id):
         Likes.objects.create(users=Users.objects.get(id=users_id), secrets=Secrets.objects.get(id=secrets_id))
     def get_user_likes(self, id):
-        Likes.objects.filter(id=id)
+        Likes.objects.filter(users__id=id)
     def get_likes(self):
         return Likes.objects.all()
 

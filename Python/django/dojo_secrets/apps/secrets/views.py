@@ -12,26 +12,16 @@ def index(request):
 def log_reg(request):
     if request.method == 'POST':
         if request.POST['action'] == 'register':
-            print 'register'
-            register = Users.objects.validate(request.POST)
-            if not register[0]:
-                for error in register[1]:
-                    messages.error(request, error)
-            else:
-                request.session['id'] = register[1].id
-                request.session['fName'] = register[1].fName
-                return redirect('secrets')
+            response = Users.objects.validate(request.POST)
         elif request.POST['action'] == 'login':
-            print 'login'
-            login = Users.objects.login(request.POST)
-            if not login[0]:
-                for error in login[1]:
-                    messages.error(request, error)
-                print 'if'
-            else:
-                request.session['id'] = login[1].id
-                request.session['fName'] = login[1].fName
-                return redirect('secrets')
+            response = Users.objects.login(request.POST)
+        if not response[0]:
+            for error in response[1]:
+                messages.error(request, error)
+        else:
+            request.session['id'] = response[1].id
+            request.session['fName'] = response[1].fName
+            return redirect('secrets')
     return redirect('/')
 
 
@@ -41,17 +31,15 @@ def secrets(request):
     context = {
         'secrets': Secrets.objects.get_secrets(),
         'likes': Likes.objects.get_likes(),
-        'user_likes': Likes.objects.get_user_likes(request.session['id'])
+        'user_likes': Secrets.objects.test(request.session['id'])
     }
-    likes = Likes.objects.get_likes()
-    for like in likes:
-        print 'like ID:', like.id, 'User ID:', like.users.id, 'Secret ID:', like.secrets.id
     return render(request, 'secrets/secrets.html', context)
 
 def post(request):
     if request.method == 'POST':
         Secrets.objects.post_secret(request.POST['secret'], request.session['id'])
-        return redirect('secrets')
+    return redirect('secrets')
+
 
 def likes(request, secret_id):
     Likes.objects.like_secret(request.session['id'], secret_id)
@@ -64,7 +52,7 @@ def delete(request, secret_id):
 
 def popular(request):
     if 'id' not in request.session:
-        return redirect('/')
+        return redirect('index')
     context = {
         'secrets': Secrets.objects.popular_secrets()
     }
