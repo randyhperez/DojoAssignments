@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from .models import Users, Secrets, Likes
 
 # Create your views here.
-def index(request):
+def login(request):
     return render(request, 'secrets/index.html')
 
 def log_reg(request):
@@ -27,7 +27,7 @@ def log_reg(request):
 
 def secrets(request):
     if 'id' not in request.session:
-        return redirect('/')
+        return redirect('login')
     context = {
         'secrets': Secrets.objects.get_secrets(),
         'likes': Likes.objects.get_likes(),
@@ -52,7 +52,7 @@ def delete(request, secret_id):
 
 def popular(request):
     if 'id' not in request.session:
-        return redirect('index')
+        return redirect('login')
     context = {
         'secrets': Secrets.objects.popular_secrets()
     }

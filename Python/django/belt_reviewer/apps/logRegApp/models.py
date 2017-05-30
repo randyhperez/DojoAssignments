@@ -37,41 +37,6 @@ class UsersDBManager(models.Manager):
             newUser = Users.objects.filter(email=data['email'])
             return [True, newUser[0]]
 
-    def login(self, data):
-        errors = []
-        verify = Users.objects.filter(email=data['email'])
-        psw = data['psw'].encode()
-        hash_psw = bcrypt.hashpw(psw, bcrypt.gensalt())
-        if not verify:
-            errors.append('Invalid email or password')
-        elif not bcrypt.checkpw(data['psw'].encode(), verify[0].hash_psw.encode()):
-            errors.append('Invalid email or password')
-        if errors:
-            return [False, errors]
-        else:
-            return [True, verify[0]]
-
-class SecretsDBManager(models.Manager):
-    def post_secret(self, text, id):
-        if text == "":
-            return
-        else:
-            Secrets.objects.create(secret=text, users=Users.objects.get(id=id))
-    def popular_secrets(self):
-        return Secrets.objects.all().order_by('-secrets_likes')
-    def test(self, id):
-        return Secrets.objects.filter(secrets_likes__users__id=id)
-    def get_secrets(self):
-        return Secrets.objects.all().order_by('-created_at')[:10]
-
-class LikesDBManager(models.Manager):
-    def like_secret(self, users_id, secrets_id):
-        Likes.objects.create(users=Users.objects.get(id=users_id), secrets=Secrets.objects.get(id=secrets_id))
-    def get_user_likes(self, id):
-        return Likes.objects.filter(users__id=id)
-    def get_likes(self):
-        return Likes.objects.all()
-
 class Users(models.Model):
     fName = models.CharField(max_length=50)
     lName = models.CharField(max_length=50)
@@ -80,17 +45,3 @@ class Users(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UsersDBManager()
-
-class Secrets(models.Model):
-    secret = models.TextField(default=None)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    users = models.ForeignKey(Users, related_name='users_secrets', on_delete=models.CASCADE)
-    objects = SecretsDBManager()
-
-class Likes(models.Model):
-    users = models.ForeignKey(Users, related_name='users_likes', on_delete=models.CASCADE)
-    secrets = models.ForeignKey(Secrets, related_name='secrets_likes', on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    objects = LikesDBManager()
