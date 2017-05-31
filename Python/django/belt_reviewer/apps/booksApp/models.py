@@ -13,7 +13,7 @@ class AuthorsDBManager(models.Manager):
         unique = AuthorsDB.objects.filter(name=data['add_author'])
         if unique:
             return [False, 'Author ' + data['add_author'] + 'already exists. Choose them from the dropdown menu']
-        AuthorsDB.objects.create(name=data['name'], user=Users.objects.get(id=user_id))
+        AuthorsDB.objects.create(name=data['add_author'], users=Users.objects.get(id=user_id))
         return [AuthorsDB.objects.get(name=data['add_author'])]
     def get_author(self, data):
         return [AuthorsDB.objects.get(name=data['existing_author'])]
@@ -30,6 +30,7 @@ class BooksDBManager(models.Manager):
 class ReviewsDBManager(models.Manager):
     def create_review(self, data, book_id, user_id):
         ReviewsDB.objects.create(review=data['review'], rating=int(data['rating']), book=BooksDB.objects.get(id=book_id), user=Users.objects.get(id=user_id))
+
 
 class AuthorsDB(models.Model):
     name = models.CharField(max_length=100)

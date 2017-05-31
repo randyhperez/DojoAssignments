@@ -5,6 +5,8 @@
     <title>Add Book and Review</title>
   </head>
   <body>
+    <a href="{% url 'logRegApp:logout' %}">Logout</a>
+    <a href="{% url 'booksApp:books' %}">Home</a>
     <form action="{% url 'booksApp:addBook' %}" method="post">
       {% csrf_token %}
       <label for="title">Book Title: </label>
@@ -36,7 +38,7 @@
         <option value="5">5</option>
       </select>
       <br>
-      <button type="submit" name="add">Add Book and Review</button>
+      <button type="submit" name="add" value="addBook">Add Book and Review</button>
     </form>
     {% if messages %}
     {% for message in messages %}

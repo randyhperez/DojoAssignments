@@ -63,6 +63,9 @@ class SecretsDBManager(models.Manager):
         return Secrets.objects.filter(secrets_likes__users__id=id)
     def get_secrets(self):
         return Secrets.objects.all().order_by('-created_at')[:10]
+    def test2(self):
+        print 'HIIIIIIIIIIIIIIIIIIIIIIII'
+        return Users.objects.filter(users_likes__secrets_likes=self)
 
 class LikesDBManager(models.Manager):
     def like_secret(self, users_id, secrets_id):

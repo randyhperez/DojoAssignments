@@ -31,7 +31,8 @@ def secrets(request):
     context = {
         'secrets': Secrets.objects.get_secrets(),
         'likes': Likes.objects.get_likes(),
-        'user_likes': Secrets.objects.test(request.session['id'])
+        'user_likes': Secrets.objects.test(request.session['id']),
+        'userObj': Users.objects.get(id=request.session['id']),
     }
     return render(request, 'secrets/secrets.html', context)
 

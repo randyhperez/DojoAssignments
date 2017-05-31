@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <a href="{% url 'booksApp:books' %}">Home</a>
+    <a href="{% url 'booksApp:add' %}">Add Book and Review</a>
+    <a href="{% url 'logRegApp:logout' %}">Logout</a>
+    <h4>User Alias: {{user.fName}}</h4>
+    <p>Name: {{user.fName}}  {{user.lName}}</p>
+    <p>Email: {{user.email}}</p>
+    <p>Total Reviews: {{user.users_reviews.count}}</p>
+    <h4>Posted Reviews on the Following Books:</h4>
+    {% for book in books %}
+    <p><a href="{% url 'booksApp:bookReview' book.id %}">{{book.title}}</a></p>
+    {% endfor %}
+  </body>
+</html>
