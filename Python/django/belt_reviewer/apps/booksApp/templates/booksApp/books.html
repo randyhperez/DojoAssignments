@@ -12,6 +12,7 @@
     {% for review in reviews %}
     <h4><a href="{% url 'booksApp:bookReview' review.book.id %}">{{review.book.title}}</a></h4>
     <p>Rating: {{review.rating}}</p>
+    <p>{{review.book.author.name}}</p>
     <p><a href="{% url 'booksApp:user' review.user.id %}">{{review.user.fName}}:</a> {{review.review}}</p>
     <p>{{review.created_at}}</p>
     <hr>

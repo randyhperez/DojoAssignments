@@ -37,6 +37,20 @@ class UsersDBManager(models.Manager):
             newUser = Users.objects.filter(email=data['email'])
             return [True, newUser[0]]
 
+    def login(self, data):
+        errors = []
+        verify = Users.objects.filter(email=data['email'])
+        psw = data['psw'].encode()
+        hash_psw = bcrypt.hashpw(psw, bcrypt.gensalt())
+        if not verify:
+            errors.append('Invalid email or password')
+        elif not bcrypt.checkpw(data['psw'].encode(), verify[0].hash_psw.encode()):
+            errors.append('Invalid email or password')
+        if errors:
+            return [False, errors]
+        else:
+            return [True, verify[0]]
+
 class Users(models.Model):
     fName = models.CharField(max_length=50)
     lName = models.CharField(max_length=50)
