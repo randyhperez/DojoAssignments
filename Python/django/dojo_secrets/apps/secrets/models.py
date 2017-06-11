@@ -85,7 +85,7 @@ class Users(models.Model):
 class Secrets(models.Model):
     def get_likes_user(self):
         print 'HIIIIIIIIIIIIIIIIIIIIIIII'
-        return Users.objects.filter(users_likes__secrets_likes=self)
+        return Users.objects.filter(users_likes__secrets=self)
     secret = models.TextField(default=None)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
