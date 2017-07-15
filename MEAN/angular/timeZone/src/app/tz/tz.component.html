@@ -1,0 +1,7 @@
+<h1>US Time Zone Display</h1>
+<button name="mst" (click)="getTZ('MST')">MST</button>
+<button name="pst" (click)="getTZ('PST')">PST</button>
+<button name="cst" (click)="getTZ('CST')">CST</button>
+<button name="est" (click)="getTZest()">EST</button>
+<button name="clear" (click)="getTZest()">Clear</button>
+<p>{{ today | date: 'medium'}}</p>

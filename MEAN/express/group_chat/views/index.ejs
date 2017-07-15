@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Chat App</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+        var socket = io.connect();
+
+        var person = prompt("Please enter your name")
+
+        console.log(person);
+
+        if(person != null){
+          socket.emit('new_user', person);
+        }
+
+        $('form').submit(function(e){
+          e.preventDefault();
+          socket.emit('new_msg', {
+            name: person,
+            message: $('#msg').val()
+          });
+          $('#msg').val('')
+        });
+
+        socket.on('user_join', data => {
+          for (var idx = 0; idx < data.length; idx++) {
+            $('#chatbox').append(`<p><span>${ data[idx].name }</span>: ${ data[idx].message }</p>`)
+          }
+        })
+
+        socket.on('msg_created', data => {
+            $('#chatbox').append(`<p><span>${ data.name }</span>: ${ data.message }</p>`)
+        })
+
+      });
+    </script>
+  </head>
+  <body>
+    <h3>Conversation Board</h3>
+    <div id="chatbox">
+
+    </div>
+    <form class="" action="index.html" method="post">
+      <textarea id="msg" name="name" rows="1" cols="80"></textarea>
+      <br>
+      <button type="submit" name="button">Send</button>
+    </form>
+  </body>
+</html>

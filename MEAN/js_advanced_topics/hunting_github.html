@@ -1,27 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <script src="bower_components/jquery/dist/jquery.js" charset="utf-8"></script>
-  <title>Document</title>
-  <script>
-  $(document).ready(
-    function(){
-      $('button').click(function(){
-        // as soon as the AJAX request returns, displayName is invoked and passed data!
-        //https://api.jquery.com/jquery.get/
-        $.get('https://api.github.com/users/randyhperez', displayName);
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+        $('button').click(function(){
+            $.get('https://api.github.com/users/randyhperez', function(info){
+              $("#showInfo").append("<p>" + info.login + "</p>");
+            });
+        });
+
       });
-    function displayName(data){
-        if (data.name){
-          $('body').append("<p>"+data.name+"</p>");
-        }
-      }
-    }
-  );
-  </script>
-</head>
-<body>
-<button>Click Me</button>
-</body>
+    </script>
+  </head>
+  <body>
+    <div id="showInfo">
+
+    </div>
+    <button type="button" name="button">GitHub Info</button>
+  </body>
 </html>

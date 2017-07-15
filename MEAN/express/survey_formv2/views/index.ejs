@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Survey Form</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        console.log('document ready');
+        var socket = io.connect();
+
+        $('form').submit(function(e){
+          console.log('form submit');
+          e.preventDefault();
+          socket.emit('posting_form', {
+            name: $('#name').val(),
+            location: $('#loc').val(),
+            language: $('#lang').val(),
+            comment: $('#comment').val()
+          });
+        });
+
+        socket.on('updated_message', function(data){
+          console.log('updated_message');
+          $('#msg').html(`You emmitted the following information to the server: ${JSON.stringify(data.response)}`);
+        });
+
+        socket.on('random_number', function(data){
+          console.log('random number');
+          $('#num').html(`Your lucky number emitted be the server is: ${ data }`)
+        });
+
+      });
+    </script>
+  </head>
+  <body>
+    <div id="msg">
+
+    </div>
+    <div id="num">
+
+    </div>
+    <form action="" id="form">
+      <label for="name">Your Name: </label>
+      <input id="name" type="text" name="name" value="">
+      <br>
+      <label for="loc">Dojo Location: </label>
+      <select id="loc" name="loc">
+        <option value="seattle">Seattle</option>
+        <option value="dc">DC</option>
+        <option value="austin">Austin</option>
+      </select>
+      <br>
+      <label for="lang">Favorite Language: </label>
+      <select id="lang" name="lang">
+        <option value="javascript">Javascript</option>
+        <option value="python">Python</option>
+        <option value="ruby">Ruby</option>
+        <option value="c#">C#</option>
+      </select>
+      <br>
+      <label for="comment">Comment: </label>
+      <br>
+      <textarea id="comment" name="comment" rows="8" cols="80"></textarea>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+    <button id="but" type="button" name="button">Test</button>
+  </body>
+</html>

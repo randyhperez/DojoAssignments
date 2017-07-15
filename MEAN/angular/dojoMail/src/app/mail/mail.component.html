@@ -1,0 +1,20 @@
+<h1>Dojo Mail</h1>
+
+<table>
+  <thead>
+    <th>Email</th>
+    <th>Importance</th>
+    <th>Subject</th>
+    <th>Content</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let element of emailArr">
+      <td>{{element.email}}</td>
+      <td *ngIf="element.importance">High</td>
+      <td *ngIf="!element.importance">Low</td>
+      <td>{{element.subject}}</td>
+      <td>{{element.content}}</td>
+    </tr>
+  </tbody>
+</table>
+
