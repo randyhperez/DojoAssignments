@@ -1,0 +1,20 @@
+<h3>Add a Quote</h3>
+<form (submit)="onSubmit($event)" #quoteForm="ngForm">
+  <textarea name="quote" id="" cols="80" rows="10" [(ngModel)]="newQuote.quote" #quote="ngModel" minlength="4" required></textarea>
+  <div *ngIf="(quote.touched || quote.dirty) && quote.errors">
+    <p *ngIf="quote.errors.required">Quote is required</p>
+  </div>
+  <div *ngIf="quote.touched && quote.dirty && quote.errors">
+    <p *ngIf="quote.errors.minlength">Quote must be atleast 4 characters</p>
+  </div>
+  <br>
+  <label for="author">Author</label>
+  <input type="text" name="author" [(ngModel)]="newQuote.author" #author="ngModel" minlength="2" required>
+  <div *ngIf="(author.touched || author.dirty) && author.errors || author.touched && author.dirty && author.errors">
+    <p *ngIf="author.errors.required">Author is required</p>
+    <p *ngIf="author.errors.minlength">Author must be atleast 2 characters</p>
+  </div>
+  <br>
+  <button type="submit">Add Quote</button>
+</form>
+

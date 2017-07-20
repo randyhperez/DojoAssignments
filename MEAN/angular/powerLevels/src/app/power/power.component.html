@@ -1,0 +1,14 @@
+<fieldset>
+  <legend>Power</legend>
+  <form (submit)="onSubmit($event)" >
+    <label for="lvl">Initial Power Level: </label>
+    <input type="number" name="lvl" [(ngModel)]="power">
+    <button type="submit">Calculate Power</button>
+  </form>
+  <app-human class='childComp' [powerLvl]="calcPower"></app-human>
+  <app-saiyan [powerLvl]="calcPower" class="childComp"></app-saiyan>
+  <app-super-saiyan [powerLvl]="calcPower" class="childComp"></app-super-saiyan>
+  <app-super-saiyan-two [powerLvl]="calcPower" class="childComp"></app-super-saiyan-two>
+  <app-super-saiyan-three [powerLvl]="calcPower" class="childComp"></app-super-saiyan-three>
+  <app-super-saiyan-four [powerLvl]="calcPower" class="childComp"></app-super-saiyan-four>
+</fieldset>

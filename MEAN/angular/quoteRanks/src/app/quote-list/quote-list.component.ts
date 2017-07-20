@@ -1,0 +1,36 @@
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { QUOTES } from '../data/quotes'
+
+@Component({
+  selector: 'app-quote-list',
+  templateUrl: './quote-list.component.html',
+  styleUrls: ['./quote-list.component.css']
+})
+export class QuoteListComponent implements OnInit {
+  @Input() allQuotes;
+  @Output() deleteEventEmitter = new EventEmitter();
+  quotes = QUOTES;
+
+  voteUp(quote){
+    console.log('up vote');
+    quote.votes++;
+    
+  }
+
+  voteDown(quote){
+    console.log('down vote');
+    quote.votes--;
+    
+  }
+
+  deleteQuote(idx){
+    console.log('deleting');
+    this.deleteEventEmitter.emit(idx);
+  }
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

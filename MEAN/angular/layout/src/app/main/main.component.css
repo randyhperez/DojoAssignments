@@ -1,0 +1,22 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.main {
+    background-color: cornflowerblue;
+    width: 656px;
+    height: 500px;
+    display: inline-block;
+    border: 3px solid black;
+    margin-left: 25px;
+}
+
+/*p {
+    margin-bottom: 10px;
+}*/
+
+.par {
+    margin-left: 20px;
+    /*margin-bottom: 10px;*/
+}

@@ -1,0 +1,4 @@
+<div class="container">
+  <app-quote-form (newQuoteEventEmitter)="newQuote($event)"></app-quote-form>
+  <app-quote-list [allQuotes]="QUOTES" (deleteEventEmitter)="deleteQuote($event)"></app-quote-list>
+</div>

@@ -1,0 +1,12 @@
+<div>
+  <h2>GitHub Score</h2>
+  <form (submit)="onSubmit()" #gitForm="ngForm">
+    <label for="username">Github username: </label>
+    <input type="text" name="username" [(ngModel)]="username" #uName="ngModel" required>
+    <div *ngIf="(uName.touched || uName.dirty) && uName.errors">
+      <p *ngIf="uName.errors.required">Username is required</p>
+    </div>
+    <br>
+    <button type="submit" [disabled]="gitForm.invalid">Calculate my Github Score</button>
+  </form>
+</div>

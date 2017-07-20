@@ -1,0 +1,7 @@
+<fieldset>
+  <legend>SuperSaiyanTwoComponent</legend>
+  <p>Power Level: <span *ngIf="powerLvl">{{ powerLvl }}</span></p>
+  <h4 *ngIf="powerLvl > 50000">"The One"</h4>
+  <h4 *ngIf="powerLvl < 50000 && powerLvl >= 20000">"Superlative"</h4>
+  <h4 *ngIf="powerLvl < 20000 && powerLvl > 9000">"Over 9000!"</h4>
+</fieldset>

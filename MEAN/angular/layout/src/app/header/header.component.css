@@ -1,0 +1,16 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.header {
+    background: cornflowerblue;
+    border: 3px solid black;
+    margin-bottom: 25px;
+    width: 97%;
+}
+
+h1 {
+    margin-left: 25px;
+    padding: 25px 25px;
+}

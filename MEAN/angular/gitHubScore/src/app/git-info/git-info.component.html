@@ -1,0 +1,9 @@
+<div *ngIf="userObj.exists === true">
+  <h3>Your Score: {{ userObj.score }}</h3>
+  <p *ngIf="userObj.score < 20">Needs Work!</p>
+  <p *ngIf="userObj.score > 19 && userObj.score < 50">A Decent Start</p>
+  <p *ngIf="userObj.score > 49 && userObj.score < 100">Doing Good</p>
+  <p *ngIf="userObj.score > 99 && userObj.score < 200">Great Job</p>
+  <p *ngIf="userObj.score >= 200">GitHub Elite!</p>
+</div>
+<h4 *ngIf="userObj.exists === false">User doesn't exist</h4>
