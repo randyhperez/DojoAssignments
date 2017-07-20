@@ -15,8 +15,8 @@ export class AppComponent {
     QUOTES.push(quote)
   }
 
-  deleteQuote(idx){
-    QUOTES.splice(idx, 1);
+  deleteQuote(quote){
+    QUOTES.splice(QUOTES.indexOf(quote), 1);
   }
 
 }

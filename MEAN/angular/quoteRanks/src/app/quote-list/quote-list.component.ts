@@ -23,9 +23,9 @@ export class QuoteListComponent implements OnInit {
     
   }
 
-  deleteQuote(idx){
+  deleteQuote(quote){
     console.log('deleting');
-    this.deleteEventEmitter.emit(idx);
+    this.deleteEventEmitter.emit(quote);
   }
 
   constructor() { }
