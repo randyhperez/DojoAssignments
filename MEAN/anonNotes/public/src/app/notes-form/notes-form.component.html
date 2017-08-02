@@ -1,0 +1,6 @@
+<h1>Anon Notes</h1>
+<form (submit)="onSubmit($event)" #noteForm="ngForm">
+  <label for="content">Note:</label>
+  <input type="text" name="content" [(ngModel)]="note.content" #content="ngModel" minlength="3" required>
+  <button [disabled]="noteForm.invalid">Add Note</button>
+</form>
