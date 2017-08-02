@@ -1,2 +1,2 @@
-<app-notes-form></app-notes-form>
-<app-notes></app-notes>
+<app-notes-form (newNoteEmitter)="newNote($event)"></app-notes-form>
+<app-notes [allNotes]="notes" (getNotesEmitter)="getNotes()"></app-notes>

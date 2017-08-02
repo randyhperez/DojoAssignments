@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpService } from '../http.service';
 import { Note } from '../note';
 
@@ -8,6 +8,8 @@ import { Note } from '../note';
   styleUrls: ['./notes-form.component.css']
 })
 export class NotesFormComponent implements OnInit {
+  @Output() newNoteEmitter = new EventEmitter();
+
   note: Note = new Note();
 
   constructor(private _httpService: HttpService) { }
@@ -15,9 +17,8 @@ export class NotesFormComponent implements OnInit {
   onSubmit(event){
     event.preventDefault();
     console.log('Submitting Note', this.note);
-    this._httpService.add(this.note)
-      .then(() => console.log('success creating note'))
-      .catch(() => console.log('failed creating note'))
+    this.newNoteEmitter.emit(this.note);
+    this.note = new Note();
   }
 
   ngOnInit() {

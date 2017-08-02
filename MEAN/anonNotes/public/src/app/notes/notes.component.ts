@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { HttpService } from '../http.service';
 import { Note } from '../note';
 import { BehaviorSubject } from 'rxjs'
@@ -10,26 +10,15 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./notes.component.css']
 })
 export class NotesComponent implements OnInit {
-  notes: Array<Note> = [];
-  subscription: Subscription;
+  @Input() allNotes;
+  @Output() getNotesEmitter = new EventEmitter();
 
   constructor(private _httpService: HttpService) {
 
   }
 
-
-
   ngOnInit() {
-    this.getNotes();
-  }
-
-  getNotes(){
-    this._httpService.getNotes()
-      .then(allNotes => {
-        console.log('Got Notes', allNotes);
-        this.notes = allNotes;
-      })
-      .catch(error => console.log('Error getting allNotes', error));
+    this.getNotesEmitter.emit();
   }
 
 }
