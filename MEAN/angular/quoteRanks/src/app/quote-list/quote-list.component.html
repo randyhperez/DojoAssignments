@@ -1,5 +1,5 @@
 <h3>Quotes List</h3>
-<div *ngFor="let quote of quotes">
+<div *ngFor="let quote of allQuotes">
   <p>"{{ quote.quote }}"</p>
   <p>- {{ quote.author }}</p>
   <p *ngIf="quote.votes > 0">+ {{ quote.votes }}</p>

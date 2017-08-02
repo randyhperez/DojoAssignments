@@ -1,0 +1,20 @@
+<form (submit)='onSubmit($event)' #newBook="ngForm">
+  <label for="title" >Title: </label>
+  <input type="text" name="title" #title="ngModel" [(ngModel)]="selected.title" minlength="4" required >
+  <div *ngIf="title.touched && title.dirty && title.errors">
+    <p *ngIf="title.errors.minlength">Title must be 4 or more characters</p>
+    <p *ngIf="title.errors.required">Title field is required</p>
+  </div>
+  <br>
+  <label for="price">Price: </label>
+  <input type="number" name="price" #price="ngModel" [(ngModel)]="selected.price" required>
+  <div *ngIf="price.touched && price.dirty && price.errors">
+    <p *ngIf="price.errors.required">Price field is required</p>
+  </div>
+  <br>
+  <label for="url">Image Url: </label>
+  <input type="text" name="url" [(ngModel)]="selected.imgurl" >
+  <br>
+  <button type="submit" [disabled]="newBook.invalid" >Update</button>
+  <button routerLink="/product/list" >Cancel</button>
+</form>

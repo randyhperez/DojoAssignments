@@ -2,9 +2,11 @@
 <form (submit)="onSubmit($event)" #quoteForm="ngForm">
   <textarea name="quote" id="" cols="80" rows="10" [(ngModel)]="newQuote.quote" #quote="ngModel" minlength="4" required></textarea>
   <div *ngIf="(quote.touched || quote.dirty) && quote.errors">
+    TEST
     <p *ngIf="quote.errors.required">Quote is required</p>
   </div>
   <div *ngIf="quote.touched && quote.dirty && quote.errors">
+    TESTTOO
     <p *ngIf="quote.errors.minlength">Quote must be atleast 4 characters</p>
   </div>
   <br>

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { QUOTES } from '../data/quotes'
+import { QUOTES } from '../data/quotes';
+import { Quote } from '../quote';
 
 @Component({
   selector: 'app-quote-list',
@@ -7,7 +8,7 @@ import { QUOTES } from '../data/quotes'
   styleUrls: ['./quote-list.component.css']
 })
 export class QuoteListComponent implements OnInit {
-  @Input() allQuotes;
+  @Input() allQuotes: Array<Quote> = [];
   @Output() deleteEventEmitter = new EventEmitter();
   quotes = QUOTES;
 

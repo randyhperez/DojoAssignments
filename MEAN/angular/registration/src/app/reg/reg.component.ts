@@ -30,6 +30,7 @@ export class RegComponent implements OnInit {
     console.log(this.user);
     this.users.push(this.user);
     console.log(this.users);
+    this.user = new User();
   }
   constructor() { }
 

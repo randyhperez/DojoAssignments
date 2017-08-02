@@ -11,8 +11,10 @@ export class AppComponent {
 
   newQuote(quote){
     quote.id = QUOTES.length
-    console.log(quote);
+    console.log('Adding quote',quote);
     QUOTES.push(quote)
+    console.log('QUOTES - ', QUOTES);
+    
   }
 
   deleteQuote(quote){
