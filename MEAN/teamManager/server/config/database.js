@@ -1,7 +1,7 @@
 const fs = require('fs');
 const mongoose = require('mongoose');
 const path = require('path');
-const reg = new RegExp('.js$', 'i');
+const reg = new RegExp('.js$', 'i')
 
 mongoose.connect('mongodb://localhost/teamManagerDB');
 mongoose.connection.on('connected', () => console.log('Connected to MongoDB'));
