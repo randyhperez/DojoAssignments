@@ -10,7 +10,7 @@ require('./server/config/database');
 app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
 
-// app.use(express.static(path.join(__dirname, './public/dist')));
+app.use(express.static(path.join(__dirname, './public/dist')));
 
 app.use('/api/notes', require('./server/config/routes/routes.js'));
 

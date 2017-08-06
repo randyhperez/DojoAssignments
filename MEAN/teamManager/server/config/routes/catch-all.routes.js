@@ -3,5 +3,5 @@ const router = require('express').Router();
 
 module.exports = router
     .all('*', function(request, response){
-        response.sendfile(__dirname, '../../../public/dist/index.html');
+        response.sendFile(__dirname, '../../../public/dist/index.html');
     });
