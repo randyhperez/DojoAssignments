@@ -1,3 +1,14 @@
-<p>
-  add works!
-</p>
+<form (submit)="onSubmit($event)" #playerForm="ngForm">
+  <label for="name">Player Name:</label>
+  <input type="text" name="name" #name="ngModel">
+  <br>
+  <label for="pos">Preferred Position</label>
+  <select name="position" #position="ngModel">
+    <option value="fwd">Forward</option>
+    <option value="mid">Midfielder</option>
+    <option value="def">Defender</option>
+    <option value="gk">Goalkeeper</option>
+  </select>
+  <br>
+  <button>Add</button>
+</form>

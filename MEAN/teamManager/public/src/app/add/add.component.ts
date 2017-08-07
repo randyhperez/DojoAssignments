@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Player } from '../player';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-add',
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add.component.css']
 })
 export class AddComponent implements OnInit {
+  player: Player = new Player();
 
-  constructor() { }
+  constructor(private _apiService: ApiService) { }
 
   ngOnInit() {
+  }
+
+  onSubmit(){
+    event.preventDefault()
+    console.log('onSubmit', this.player)
+    // this._apiService.createPlayer(this.player)
+    //   .then()
+    //   .catch();
+    // this.player = new Player();
   }
 
 }
