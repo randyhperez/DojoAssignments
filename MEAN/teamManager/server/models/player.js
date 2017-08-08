@@ -9,7 +9,8 @@ const playerSchema = new Schema({
         minlength: 3,
     },
     position: {
-        position: String
+        type: String,
+        required: true,
     },
     action: {
         type: String,

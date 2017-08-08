@@ -5,15 +5,19 @@ const port = process.env.PORT || 8000;
 
 const app = express()
 
-require('./server/config/database');
-
 app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
 
+// DB
+require('./server/config/database');
+
+// Angular
 app.use(express.static(path.join(__dirname, './public/dist')));
 
-app.use('/api/notes', require('./server/config/routes/routes.js'));
+// routes 
+app.use('/api/player', require('./server/config/routes/routes.js'));
 
+// catch all
 const catchAll = require('./server/config/routes/catch-all.routes.js');
 app.use(catchAll)
 

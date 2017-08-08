@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Player } from '../player';
 import { ApiService } from '../api.service';
+import { Player } from '../player';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  selector: 'app-status',
+  templateUrl: './status.component.html',
+  styleUrls: ['./status.component.css']
 })
-export class ListComponent implements OnInit {
+export class StatusComponent implements OnInit {
   allPlayers: Array<Player> = [];
 
   constructor(private _apiService: ApiService) { }
@@ -23,10 +23,11 @@ export class ListComponent implements OnInit {
       .catch(error => console.log(error));
   }
 
-  destroy(player, index){
-    console.log('ListComponent - destroy', player)
-    this._apiService.removePlayer(player._id)
-      .then(() => this.allPlayers.splice(this.allPlayers.indexOf(player), 1))
+  update(player, status: string) {
+    player.action = status
+    console.log('StatusComponent -', player)
+    this._apiService.updatePlayer(player._id, player)
+      .then(result => console.log('result is', result))
       .catch(error => console.log(error))
   }
 

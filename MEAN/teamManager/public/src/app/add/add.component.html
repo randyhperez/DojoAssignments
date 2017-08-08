@@ -1,14 +1,24 @@
+<br>
+<a routerLink="/players/list">List</a>
+<a routerLink="/players/add">Add Player</a>
 <form (submit)="onSubmit($event)" #playerForm="ngForm">
   <label for="name">Player Name:</label>
-  <input type="text" name="name" #name="ngModel">
+  <input type="text" name="name" #name="ngModel" [(ngModel)]="player.name" minlength="2" required>
+  <div *ngIf="(name.touched && name.dirty) && name.errors">
+    <p *ngIf="name.errors.required">Player name is required</p>
+    <p *ngIf="name.errors.minlength">Player name must be atleast 2 characters</p>
+  </div>
   <br>
   <label for="pos">Preferred Position</label>
-  <select name="position" #position="ngModel">
-    <option value="fwd">Forward</option>
-    <option value="mid">Midfielder</option>
-    <option value="def">Defender</option>
-    <option value="gk">Goalkeeper</option>
+  <select name="position" #position="ngModel" [(ngModel)]="player.position" required>
+    <option value="Forward">Forward</option>
+    <option value="Midfielder">Midfielder</option>
+    <option value="Defender">Defender</option>
+    <option value="Goalkeeper">Goalkeeper</option>
   </select>
+  <div *ngIf="(position.touched && position.dirty) && position.errors">
+    <p *ngIf="position.errors.required">Player position is required</p>
+  </div>
   <br>
-  <button>Add</button>
+  <button [disabled]="playerForm.invalid">Add</button>
 </form>

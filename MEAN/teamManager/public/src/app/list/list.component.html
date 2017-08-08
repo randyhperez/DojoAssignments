@@ -1,1 +1,17 @@
-<p>list works</p>
+<br>
+<a routerLink="/players/list">List</a>
+<a routerLink="/players/add">Add Player</a>
+<table>
+    <thead>
+        <th>Player</th>
+        <th>Position</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let player of allPlayers">
+            <td>{{ player.name }}</td>
+            <td>{{ player.position }}</td>
+            <td><button (click)="destroy(player, index)" >Delete</button></td>
+        </tr>
+    </tbody>
+</table>

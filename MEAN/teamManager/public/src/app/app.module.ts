@@ -1,12 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { ListComponent } from './list/list.component';
 import { AddComponent } from './add/add.component';
-import { LandingComponent } from './landing/landing.component';
+
+import { HttpModule } from '@angular/http';
+import { ApiService } from './api.service';
+import { StatusComponent } from './status/status.component';
+
 
 @NgModule({
   declarations: [
@@ -14,13 +19,15 @@ import { LandingComponent } from './landing/landing.component';
     NavComponent,
     ListComponent,
     AddComponent,
-    LandingComponent
+    StatusComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
