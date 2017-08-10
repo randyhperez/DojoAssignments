@@ -1,18 +1,7 @@
+<h1>Player Status - Game {{ id }}</h1>
+<a routerLink='1'>Game 1</a>
+<a routerLink='2'>Game 2</a>
+<a routerLink="3">Game 3</a>
+<router-outlet></router-outlet>
 
-<h1>Player Status - Game 1</h1>
-<table>
-  <thead>
-    <th>Player</th>
-    <th>Actions</th>
-  </thead>
-  <tbody>
-    <tr *ngFor="let player of allPlayers">
-      <td>{{ player.name }}</td>
-      <td>
-        <button [ngClass]="{playing: player.action === 'playing'}" (click)="update(player, 'playing')">Playing</button>
-        <button [ngClass]="{not: player.action === 'not playing'}" (click)="update(player, 'not playing')">Not Playing</button>
-        <button [ngClass]="{undecided: player.action === 'undecided'}" (click)="update(player, 'undecided')">Undecided</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+

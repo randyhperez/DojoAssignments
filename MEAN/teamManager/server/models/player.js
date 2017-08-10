@@ -12,7 +12,15 @@ const playerSchema = new Schema({
         type: String,
         required: true,
     },
-    action: {
+    gw1: {
+        type: String,
+        default: 'undecided'
+    },
+    gw2: {
+        type: String,
+        default: 'undecided'
+    },
+    gw3: {
         type: String,
         default: 'undecided'
     }

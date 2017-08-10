@@ -1,0 +1,26 @@
+<table>
+  <thead>
+    <th>Player</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let player of allPlayers">
+      <td>{{ player.name }}</td>
+      <td *ngIf="id == 1">
+        <button [ngClass]="{playing: player.gw1 === 'playing'}" (click)="update(player, 'playing')">Playing</button>
+        <button [ngClass]="{not: player.gw1 === 'not playing'}" (click)="update(player, 'not playing')">Not Playing</button>
+        <button [ngClass]="{undecided: player.gw1 === 'undecided'}" (click)="update(player, 'undecided')">Undecided</button>
+      </td>
+      <td *ngIf="id == 2">
+        <button [ngClass]="{playing: player.gw2 === 'playing'}" (click)="update(player, 'playing')">Playing</button>
+        <button [ngClass]="{not: player.gw2 === 'not playing'}" (click)="update(player, 'not playing')">Not Playing</button>
+        <button [ngClass]="{undecided: player.gw2 === 'undecided'}" (click)="update(player, 'undecided')">Undecided</button>
+      </td>
+      <td *ngIf="id == 3">
+        <button [ngClass]="{playing: player.gw3 === 'playing'}" (click)="update(player, 'playing')">Playing</button>
+        <button [ngClass]="{not: player.gw3 === 'not playing'}" (click)="update(player, 'not playing')">Not Playing</button>
+        <button [ngClass]="{undecided: player.gw3 === 'undecided'}" (click)="update(player, 'undecided')">Undecided</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

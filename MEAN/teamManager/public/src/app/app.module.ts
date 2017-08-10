@@ -11,6 +11,7 @@ import { AddComponent } from './add/add.component';
 import { HttpModule } from '@angular/http';
 import { ApiService } from './api.service';
 import { StatusComponent } from './status/status.component';
+import { GamesComponent } from './status/games/games.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { StatusComponent } from './status/status.component';
     ListComponent,
     AddComponent,
     StatusComponent,
+    GamesComponent,
   ],
   imports: [
     BrowserModule,
